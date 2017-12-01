@@ -1,0 +1,25 @@
+{
+    "tiradas": [
+        {
+            "name": "Renault 21",
+            "description": "White long car",
+            "type": "Renault"
+        },
+        {
+            "name": "Daewoo Lanos",
+            "description": "Small and fast car",
+            "type": "Daewoo"
+        },
+        {
+            "name": "Ferrari",
+            "description": "Just an sportive car",
+            "type": "Ferrari"
+        },
+        {
+            "name": "test2",
+            "description": "test2",
+            "type": "test2"
+        },
+        {}
+    ]
+}
