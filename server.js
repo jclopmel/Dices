@@ -1,57 +1,38 @@
 var express 	= require("express"),
 	app			= express(),
+	http 		= require ("http"),
+	server 		= http.createServer(app),
 	fs 			= require ("fs"),
 	bodyParser 	= require ("body-parser"),
+	io 			= require ("socket.io");
 	port 		= process.env.PORT || 3000;
+var sockets 		= io.listen(server);
 
 
 /*                                      App files load                           */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/style", express.static(__dirname + '/style'));
-app.use("/js", express.static(__dirname + '/js'));
-app.use("/files", express.static(__dirname + '/files'));
+app.use(express.static(__dirname + '/'));
+//app.use("/style", express.static(__dirname + '/style'));
+//app.use("/js", express.static(__dirname + '/js'));
+//app.use("/files", express.static(__dirname + '/files'));
 app.get("/", function(req, res){
 	res.sendFile(__dirname + ("/index.html"))
 })
 
-/*                                      PUT                             */
-
-app.put("/", function(req, res){
-	var text = fs.readFileSync('./js/database.json','utf8');
-	var json = JSON.parse(text);
-
-	var name = req.body.name;
-	var desc = req.body.description;
-	var type = req.body.type;
-
-	var newCar = {
-		name: name,
-		description: desc,
-		type: type
-	}
-
-	json.vehicles.push(newCar);
-	fs.writeFileSync("./js/database.json", JSON.stringify(json, null, 4));
-	res.json(json);
-});
-
-/*                               PATCH                      */
-
-app.patch('/', function (req, res) {
-	var text = fs.readFileSync('./js/database.json','utf8');
-	var json = JSON.parse(text);
-
-	var position = req.body.position;
-
-	json.vehicles.splice(position,1);
-	fs.writeFileSync("./js/database.json", JSON.stringify(json, null));
-	res.json(json);
-})
-
 /*                               server listen                      */
 
-app.listen(port, function(){
+app.set("port", process.env.PORT || 3000);
+
+server.listen(app.get("port"), function(){
 	console.log("Running server at localhost: "+port);
+})
+
+sockets.on("connection", function (socket){
+	console.log("nuevo cliente conectado");
+
+	socket.on("client-message", function (data1,data2){
+		sockets.emit("server-message", data1,data2);
+	})
 })

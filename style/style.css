@@ -4,11 +4,14 @@
     border-radius: 10px;
     padding: 2px;
     margin: 2px;
-    border: #000 solid 1px;
-    box-shadow: grey 5px 5px 5px;
+    border: #1f5be2bd solid 0.5px;
+    box-shadow: grey 5px 5px 20px
     font-weight: 600;
-    background-color: #4779ea82;
-    
+    background-color: #4779ea82; 
+}
+
+.dado p{
+	margin-top:2px;
 }
 
 #mesa{
@@ -28,7 +31,7 @@
 	opacity: 0.7;
 }
 .mg1{
-	margin:1%;
+	margin:3%;
 }
 
 #resultsBox{
@@ -64,4 +67,7 @@ a:hover{
 }
 #result{
 		padding: 20px;
+}
+.py-4{
+	margin:40px 0px;
 }

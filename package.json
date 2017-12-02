@@ -4,9 +4,10 @@
   "description": "Code test",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "",
     "express": "^4.16.2",
     "file-system": "^2.2.2",
-    "body-parser": ""
+    "socket.io": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
