@@ -16,15 +16,15 @@
 
 	socket.on("server-message", function (data1, data2){
 
-		setTimeout(function(){
-			$("#result").empty();
-		}, 10000);
+		$("#result").empty();
 		
 		$("#result").append("<h4>"+data2+" ha tirado los dados: </h4>");
 		for (var i =0; i<data1.length; i++) {
 			$("#result").append("<div class='dado col-md-1 text-center'><p>"+data1[i]+"</p></div>");
 		}
 	});
+
+
 
 
 	$("#tirar").click(function (){								//Al clicker envia dados y crea array
