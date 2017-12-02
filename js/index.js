@@ -47,6 +47,7 @@
 		$("#nombres").append("<button class='btn btn-default mg1'>"+user+"</button>");
 		$("#login").addClass("hide");
 		$("#diceTable").removeClass("hide");
+		$("#nombres").removeClass("hide");
 	});
 
 }());
